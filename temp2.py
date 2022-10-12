@@ -54,12 +54,17 @@ st.write('You selected:', option)
 choice = st.selectbox(
     'Select the gender',
     ('Female', 'Male'))
-
-df_choice = df[df["gender"]==choice]
-df_choice_course = df_choice.groupby(["course"], as_index=False)['Timestamp'].count()
-fig = px.histogram(df_choice_course, x='course',histfunc="count", title = "The count of majors for this specific gender")
-st.plotly_chart(fig)
-
+if choice == 'Female':
+  df_female = df[df["gender"]=="Female"]
+  df_female_course = df_female.groupby(["course"], as_index = False)["Timestamp"].count()
+  fig = px.bar(df_female_course, x = ['course'], title = 'Count of major for females')
+  st.plotly_chart(fig)
+else:
+  df_male = df[df["gender"]=="Male"]
+  df_male_course = df_male.groupby(["course"], as_index = False)["Timestamp"].count()
+  fig = px.bar(df_male_course, x = ['course'], title = 'Count of major for males')
+  st.plotly_chart(fig)
+  
 cost=st.slider("How much is the cost of bottle of water you buy?",0.00,3.00)    
 if cost>=0.15 and cost<=2.11:
     fig=px.box(health,y="Cost of a bottle of water(City)",title="Cost of a bottle of water Cities")
