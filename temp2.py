@@ -57,7 +57,7 @@ choice = st.selectbox(
 
 df_choice = df[df["gender"]==choice]
 df_choice_course = df_choice.groupby(["course"], as_index=False)['Timestamp'].count()
-fig = px.bar(df_choice_course, x='course', title = "The count of majors for this specific gender")
+fig = px.histogram(df_choice_course, x='course',histfunc="count", title = "The count of majors for this specific gender")
 st.plotly_chart(fig)
 
 cost=st.slider("How much is the cost of bottle of water you buy?",0.00,3.00)    
