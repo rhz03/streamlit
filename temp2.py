@@ -27,8 +27,6 @@ health=pd.read_csv("healthy_lifestyle_city_2021 copy.csv")
 st.header('Health lifestyle of cities(2021) visualizations')
 fig=px.scatter(health,x="City",y="Sunshine hours(City)",title="Sunshine hours of Cities",color="City",hover_name="City")
 st.plotly_chart(fig)
-fig=px.box(health,y="Cost of a bottle of water(City)",title="Cost of a bottle of water Cities")
-st.plotly_chart(fig)
 
 choice = st.selectbox(
     'Select the gender',
