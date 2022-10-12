@@ -16,10 +16,6 @@ df=pd.read_csv("Student mental health.csv")
 df=pd.DataFrame(df)
 st.header('Mental health visualizations')
 
-fig=px.bar(df, x="Panic _attack",
-             color='gender', barmode='group',
-             height=400,title="Number of panic attacks of males and females")
-st.plotly_chart(fig)
 fig = px.histogram(df, x="course",color='gender',histfunc="count",text_auto=True,title='Number of Course of each gender')
 st.plotly_chart(fig)
 
@@ -47,3 +43,14 @@ if cost>=0.15 and cost<=2.11:
     fig=px.box(health,y="Cost of a bottle of water(City)",title="Cost of a bottle of water Cities")
     st.plotly_chart(fig)
     st.write("cost of bottle of water you buy is: €",cost)
+option = st.radio(
+    'Have you ever had a Panik attack?',
+    ('yes','no'))
+if option=="yes":
+    Panik_attack=df[df["Panic _attack"]=="Panik_attack"]
+    st.header('Find below a bar graph on number of females and males who had panik attack as a student')
+    fig=px.bar(df, x="Panic _attack",
+                 color='gender', barmode='group',
+                 height=400,title="Number of panic attacks of males and females")
+    
+    st.plotly_chart(fig)
