@@ -44,14 +44,6 @@ else:
   fig = px.pie(df_age_male , values='Age', names='Age', title='Age Distribution for Males')
   st.plotly_chart(fig)
   
-
-Panik_attack=df[df["Panic _attack"]=="Panik_attack"]
-st.header('Find below a bar graph on number of females and males who had panik attack as a student')
-fig=px.bar(df, x="Panic _attack", color='gender', barmode='group', height=400,title="Number of panic attacks of males and females")
-
-st.plotly_chart(fig)
- 
-  
 cost=st.slider("How much is the cost of bottle of water you buy?",0.00,3.00)    
 if cost>=0.15 and cost<=2.11:
     fig=px.box(health,y="Cost of a bottle of water(City)",title="Cost of a bottle of water Cities")
